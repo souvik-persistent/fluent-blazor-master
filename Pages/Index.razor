@@ -1,0 +1,23 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+<FluentDialog Hidden="ModalHidden" id="foo" aria-label="Simple dialog" Modal="true">
+    <h2>Model is here </h2>
+    <hr>
+    <h5>Name: </h5>
+    <FluentTextField @bind-Value="MyText"/>
+    <hr>
+    <FluentButton Appearance="@Appearance.Accent" @onclick="OnCloseModalParameterButtonClick">Close</FluentButton>
+</FluentDialog>
+<p>Hi, WellCome @MyText</p>
+<FluentButton Appearance="@Appearance.Accent" @onclick="OnOpenModalParameterButtonClick">Open</FluentButton>
+
+@code{
+    private FluentDialog? MyFluentDialog;
+    public bool ModalHidden { get; set; } = true;
+
+    public string MyText { get; set; } = "Your Name please!!!";
+
+    private void OnOpenModalParameterButtonClick() => ModalHidden = false;
+    private void OnCloseModalParameterButtonClick() => ModalHidden = true;
+}
